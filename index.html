@@ -851,6 +851,202 @@
             padding: 40px;
             color: var(--text-light);
         }
+
+
+/* ============================================ */
+/* TUTORIAL OVERLAY STYLES - PASTE IN <style> TAG */
+/* ============================================ */
+
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 22, 40, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.tutorial-overlay.hidden {
+    display: none;
+}
+
+.tutorial-content {
+    background: linear-gradient(135deg, rgba(13, 33, 55, 0.95) 0%, rgba(10, 22, 40, 0.95) 100%);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 24px;
+    padding: 40px 30px 30px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tutorial-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.tutorial-close:hover {
+    background: rgba(255, 59, 48, 0.3);
+    transform: rotate(90deg);
+}
+
+.tutorial-slide {
+    display: none;
+    text-align: center;
+    animation: fadeInSlide 0.3s ease;
+}
+
+.tutorial-slide.active {
+    display: block;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tutorial-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.tutorial-title {
+    font-size: 26px;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.tutorial-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 30px;
+}
+
+.tutorial-nav {
+    margin-top: 30px;
+}
+
+.tutorial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    width: 30px;
+    border-radius: 5px;
+}
+
+.tutorial-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.tutorial-btn {
+    flex: 1;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tutorial-btn-skip {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tutorial-btn-skip:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.tutorial-btn-next {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.tutorial-btn-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .tutorial-content {
+        padding: 35px 25px 25px;
+    }
+    
+    .tutorial-icon {
+        font-size: 48px;
+    }
+    
+    .tutorial-title {
+        font-size: 22px;
+    }
+    
+    .tutorial-text {
+        font-size: 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1814,6 +2010,8 @@
             updateLanguageButton();
             
             updateUI();
+	
+	    checkAndShowTutorial(); 
         }
         
         function updateLanguageButton() {
@@ -1837,11 +2035,27 @@
             }
             
             // Production mode - calculate based on Ramadan start date
-            const today = new Date();
-            const ramadanStart = new Date('2026-02-19'); // Update this to actual Ramadan start date
-            const diffTime = Math.abs(today - ramadanStart);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            return Math.min(Math.max(1, diffDays), 30);
+            // Start: Feb 19, 2026 at 5:30 AM IST
+            // IST is UTC+5:30, so we set the date in IST
+            const ramadanStartIST = new Date('2026-02-19T05:30:00+05:30');
+            
+            // Get current time in IST
+            const nowUTC = new Date();
+            const nowIST = new Date(nowUTC.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+            
+            // Calculate difference in milliseconds
+            const diffTime = nowIST - ramadanStartIST;
+            
+            // If before start time, return 0 (challenge hasn't started yet)
+            if (diffTime < 0) {
+                return 0; // Day 0 = not started yet
+            }
+            
+            // Calculate day number (add 1 because Day 1 starts at 5:30 AM on Feb 19)
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+            
+            // Cap at day 30
+            return Math.min(diffDays, 30);
         }
 
         // Get current stage
@@ -1867,20 +2081,35 @@
             // Update header
             const translatedStageName = translate(stage.name);
             const daysText = currentLanguage === 'en' ? 'Days' : 'दिन';
-            document.getElementById('stageTitle').innerHTML = `
-                Stage ${STAGES.indexOf(stage) + 1}: ${translatedStageName}<br>
-                <small style="opacity: 0.8;">${daysText} ${stage.days[0]} - ${stage.days[stage.days.length - 1]}</small>
-            `;
+            
+            // Handle Day 0 (before challenge starts)
+            if (currentDay === 0) {
+                document.getElementById('stageTitle').innerHTML = `
+                    <span class="lang-text" data-en="Challenge starts February 19, 2026 at 5:30 AM IST" data-hi="चैलेंज 19 फ़रवरी 2026, सुबह 5:30 बजे IST से शुरू होगा">Challenge starts February 19, 2026 at 5:30 AM IST</span>
+                `;
+                document.getElementById('currentDay').textContent = '-';
+            } else {
+                document.getElementById('stageTitle').innerHTML = `
+                    Stage ${STAGES.indexOf(stage) + 1}: ${translatedStageName}<br>
+                    <small style="opacity: 0.8;">${daysText} ${stage.days[0]} - ${stage.days[stage.days.length - 1]}</small>
+                `;
+                document.getElementById('currentDay').textContent = currentDay;
+            }
             
             // Update stats
             document.getElementById('totalPoints').textContent = userData.totalPoints;
-            document.getElementById('currentDay').textContent = currentDay;
             document.getElementById('streakCount').textContent = userData.currentStreak;
             
             // Update progress
             const progress = (currentDay / 30) * 100;
             document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
             document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            // Check if challenge hasn't started yet
+            if (currentDay === 0) {
+                showBeforeStartMessage();
+                return;
+            }
             
             // Check if day already completed
             if (userData.completedDays[currentDay]) {
@@ -1896,6 +2125,28 @@
 
             // Show streak badge if applicable
             updateStreakBadge();
+        }
+
+        function showBeforeStartMessage() {
+            document.getElementById('tasksContainer').classList.add('hidden');
+            document.getElementById('completionMessage').classList.remove('hidden');
+            
+            const completionMsg = document.getElementById('completionMessage');
+            completionMsg.innerHTML = `
+                <h2>🌙 <span class="lang-text" data-en="Challenge Starts Soon!" data-hi="चैलेंज जल्द शुरू होगा!">Challenge Starts Soon!</span></h2>
+                <p><span class="lang-text" data-en="The Ramadan Challenge will begin on" data-hi="रमज़ान चैलेंज शुरू होगा">The Ramadan Challenge will begin on</span></p>
+                <p style="font-size: 20px; font-weight: 600; margin-top: 10px;">
+                    <span class="lang-text" data-en="February 19, 2026 at 5:30 AM IST" data-hi="19 फ़रवरी 2026, सुबह 5:30 बजे IST">February 19, 2026 at 5:30 AM IST</span>
+                </p>
+                <p style="margin-top: 15px; opacity: 0.9;">
+                    <span class="lang-text" data-en="Get ready to transform your Ramadan!" data-hi="अपने रमज़ान को बदलने के लिए तैयार हो जाइए!">Get ready to transform your Ramadan!</span>
+                </p>
+            `;
+            
+            // Update language if needed
+            if (currentLanguage === 'hi') {
+                updateLanguage();
+            }
         }
 
         function loadTasks(day) {
@@ -2212,6 +2463,155 @@
 
         // Initialize on page load
         window.onload = init;
+
+
+/* ============================================ */
+/* TUTORIAL OVERLAY JAVASCRIPT - PASTE IN <script> TAG */
+/* ============================================ */
+
+// Tutorial state
+let currentSlide = 1;
+const totalSlides = 5;
+
+// Show tutorial on first login
+function checkAndShowTutorial() {
+    const tutorialSeen = localStorage.getItem('ramadanTutorialSeen');
+    if (!tutorialSeen) {
+        // Small delay so the app loads first
+        setTimeout(() => {
+            document.getElementById('tutorialOverlay').classList.remove('hidden');
+        }, 500);
+    }
+}
+
+// Navigate to specific slide
+function goToSlide(slideNumber) {
+    currentSlide = slideNumber;
+    
+    // Hide all slides
+    document.querySelectorAll('.tutorial-slide').forEach(slide => {
+        slide.classList.remove('active');
+    });
+    
+    // Show target slide
+    const targetSlide = document.querySelector(`.tutorial-slide[data-slide="${slideNumber}"]`);
+    if (targetSlide) {
+        targetSlide.classList.add('active');
+    }
+    
+    // Update dots
+    document.querySelectorAll('.dot').forEach(dot => {
+        dot.classList.remove('active');
+    });
+    const activeDot = document.querySelector(`.dot[data-slide="${slideNumber}"]`);
+    if (activeDot) {
+        activeDot.classList.add('active');
+    }
+    
+    // Update button text
+    const nextBtnText = document.getElementById('nextBtnText');
+    if (slideNumber === totalSlides) {
+        nextBtnText.textContent = currentLanguage === 'hi' ? 'शुरू करें' : 'Start';
+    } else {
+        nextBtnText.textContent = currentLanguage === 'hi' ? 'अगला' : 'Next';
+    }
+}
+
+// Next slide
+function nextSlide() {
+    if (currentSlide < totalSlides) {
+        goToSlide(currentSlide + 1);
+    } else {
+        closeTutorial();
+    }
+}
+
+// Close tutorial
+function closeTutorial() {
+    document.getElementById('tutorialOverlay').classList.add('hidden');
+    localStorage.setItem('ramadanTutorialSeen', 'true');
+    currentSlide = 1;
+}
+
     </script>
+
+
+<!-- Tutorial Overlay HTML - Add this right before the closing </body> tag -->
+<div id="tutorialOverlay" class="tutorial-overlay hidden">
+    <div class="tutorial-content">
+        <!-- Close Button -->
+        <button class="tutorial-close" onclick="closeTutorial()">×</button>
+        
+        <!-- Slide 1: Welcome -->
+        <div class="tutorial-slide active" data-slide="1">
+            <div class="tutorial-icon">🌙</div>
+            <h2 class="tutorial-title">अस्सलामु अलैकुम!</h2>
+            <p class="tutorial-text">
+                रमज़ान चैलेंज 2026 में ख़ुश आमदीद!<br>
+                चलिए, एक छोटा टूर लेते हैं।
+            </p>
+        </div>
+
+        <!-- Slide 2: Daily Tasks -->
+        <div class="tutorial-slide" data-slide="2">
+            <div class="tutorial-icon">✅</div>
+            <h2 class="tutorial-title">रोज़ाना के काम</h2>
+            <p class="tutorial-text">
+                हर दिन 4 छोटे काम + 1 क़ुरआन का काम मिलेगा।<br>
+                जो पूरा करें उसे टिक करें ✓
+            </p>
+        </div>
+
+        <!-- Slide 3: Points System -->
+        <div class="tutorial-slide" data-slide="3">
+            <div class="tutorial-icon">⭐</div>
+            <h2 class="tutorial-title">पॉइंट्स कमाएं</h2>
+            <p class="tutorial-text">
+                हर काम पर पॉइंट्स मिलेंगे।<br>
+                हर 5 दिन की streak = 50 बोनस पॉइंट्स! 🔥
+            </p>
+        </div>
+
+        <!-- Slide 4: Quran Task -->
+        <div class="tutorial-slide" data-slide="4">
+            <div class="tutorial-icon">📖</div>
+            <h2 class="tutorial-title">क़ुरआन का काम</h2>
+            <p class="tutorial-text">
+                5वें काम पर क्लिक करें तो क़ुरआन की आयत<br>
+                अरबी + तर्जुमे के साथ खुलेगी। 💚
+            </p>
+        </div>
+
+        <!-- Slide 5: Language & Submit -->
+        <div class="tutorial-slide" data-slide="5">
+            <div class="tutorial-icon">🚀</div>
+            <h2 class="tutorial-title">तैयार हो जाइए!</h2>
+            <p class="tutorial-text">
+                ऊपर से English/हिंदी स्विच कर सकते हैं।<br>
+                सब कामों को टिक करके <strong>Submit</strong> दबाएं!
+            </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="tutorial-nav">
+            <div class="tutorial-dots">
+                <span class="dot active" data-slide="1" onclick="goToSlide(1)"></span>
+                <span class="dot" data-slide="2" onclick="goToSlide(2)"></span>
+                <span class="dot" data-slide="3" onclick="goToSlide(3)"></span>
+                <span class="dot" data-slide="4" onclick="goToSlide(4)"></span>
+                <span class="dot" data-slide="5" onclick="goToSlide(5)"></span>
+            </div>
+            <div class="tutorial-buttons">
+                <button class="tutorial-btn tutorial-btn-skip" onclick="closeTutorial()">
+                    <span class="lang-text" data-en="Skip" data-hi="छोड़ें">छोड़ें</span>
+                </button>
+                <button class="tutorial-btn tutorial-btn-next" onclick="nextSlide()">
+                    <span id="nextBtnText">अगला</span> →
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
