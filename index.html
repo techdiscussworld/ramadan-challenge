@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Challenge 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --accent: #d4a574;
+            --accent-light: #f4d03f;
+            --bg-dark: #0a1628;
+            --bg-darker: #0d2137;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-strong: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2137 25%, #0f2d4a 50%, #0a3d3d 75%, #0a1628 100%);
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Gold gradient text */
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4a574 0%, #f4d03f 50%, #d4a574 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glows */
+        .emerald-glow {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 30px rgba(212, 165, 116, 0.3);
+        }
+
+        /* Stars background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Floating animation */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.2), transparent);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .greeting {
+            font-size: 16px;
+            color: rgba(16, 185, 129, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .stage-info {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Login Form */
+        .login-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(16, 185, 129, 0.8);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: rgba(16, 185, 129, 0.6);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            font-size: 12px;
+            color: rgba(16, 185, 129, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: rgba(16, 185, 129, 0.8);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #f4d03f);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Tasks Card */
+        .tasks-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 25px;
+        }
+
+        .tasks-card h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.2), rgba(244, 208, 63, 0.1));
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #f4d03f;
+            margin-right: 10px;
+        }
+
+        /* Task Item */
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .task-item:hover {
+            transform: translateX(5px);
+            border-color: rgba(16, 185, 129, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .task-item.completed {
+            opacity: 0.7;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .task-checkbox {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border: 2px solid rgba(16, 185, 129, 0.5);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .task-checkbox.checked {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: #10b981;
+        }
+
+        .task-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .task-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .task-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .task-ayah {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(212, 165, 116, 0.9);
+            font-family: 'Amiri', serif;
+            direction: rtl;
+            text-align: right;
+            padding: 12px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 8px;
+            border-right: 3px solid rgba(212, 165, 116, 0.5);
+        }
+
+        .task-points {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f4d03f;
+            white-space: nowrap;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d4a574 0%, #f4d03f 50%, #d4a574 100%);
+            color: #0a1628;
+            font-size: 18px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.3) !important;
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+
+        /* Language Toggle Switch */
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 4px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .language-toggle .lang-option {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .language-toggle .lang-option.active {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+        }
+
+        .language-toggle .lang-option:hover:not(.active) {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Streak Badge */
+        .streak-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        .streak-badge .icon {
+            font-size: 24px;
+        }
+
+        .streak-badge .text {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Completion Card */
+        .completion-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(244, 208, 63, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .completion-card h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #10b981, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Challenge Complete */
+        .challenge-complete {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(16, 185, 129, 0.2));
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(212, 165, 116, 0.4);
+            border: 1px solid rgba(212, 165, 116, 0.5);
+        }
+
+        .challenge-complete h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .challenge-complete .final-score {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d4a574, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
+
+        /* Testing Navigation */
+        .testing-nav {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .testing-nav .btn {
+            background: rgba(239, 68, 68, 0.8);
+            font-size: 14px;
+            padding: 10px 16px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .header .greeting {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .header .stage-info {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Login Form */
+        /* Task Modal Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: rgba(13, 33, 55, 0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 25px 25px 20px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(16, 185, 129, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 18px;
+            color: white;
+            font-weight: 600;
+            padding-right: 50px;
+            line-height: 1.4;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-arabic {
+            font-size: 28px;
+            line-height: 2;
+            text-align: right;
+            direction: rtl;
+            color: #f4d03f;
+            margin-bottom: 20px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(244, 208, 63, 0.1));
+            border-radius: 16px;
+            border-right: 4px solid rgba(212, 165, 116, 0.5);
+            font-family: 'Amiri', serif;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.2);
+        }
+
+        .modal-translation {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border-left: 3px solid rgba(16, 185, 129, 0.5);
+        }
+
+        .modal-checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-checkbox-container:hover {
+            background: linear-gradient(135deg, var(--accent) 0%, #c09020 100%);
+        }
+
+        .modal-checkbox {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border: 3px solid var(--border);
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .modal-checkbox.checked {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .modal-checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .modal-checkbox-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .modal-points-badge {
+            background: linear-gradient(135deg, var(--accent) 0%, #c09020 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px 10px;
+            }
+
+            .stat-card .value {
+                font-size: 24px;
+            }
+
+            .login-card {
+                padding: 25px;
+            }
+
+            .modal-content {
+                max-height: 90vh;
+            }
+
+            .modal-arabic {
+                font-size: 24px;
+                padding: 15px;
+            }
+
+            .modal-translation {
+                font-size: 15px;
+            }
+
+            .modal-header {
+                padding: 20px 20px 15px 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Stars Background -->
+    <div class="stars" id="starsContainer"></div>
+    
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen">
+            <div class="header">
+                <!-- Animated Crescent Moon -->
+                <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <svg class="animate-float" width="80" height="80" viewBox="0 0 100 100" fill="#f4d03f">
+                        <path d="M50 10C30 10 15 30 15 50s15 40 35 40c-15-10-20-25-20-40s5-30 20-40z" />
+                        <circle cx="70" cy="25" r="3" class="animate-pulse-slow" fill="#f4d03f" />
+                        <circle cx="80" cy="40" r="2" class="animate-pulse-slow" fill="#f4d03f" style="animation-delay: 0.5s" />
+                        <circle cx="75" cy="55" r="2.5" class="animate-pulse-slow" fill="#f4d03f" style="animation-delay: 1s" />
+                    </svg>
+                </div>
+                <h1 class="gold-gradient" style="font-size: 36px; margin-bottom: 10px;">Ramadan Challenge 2026</h1>
+                <p style="color: rgba(16, 185, 129, 0.8); font-size: 16px;">आइये इस रमजान अल्लाह की हिदायत को अपनी ज़िन्दगी में लाने की कोशिश करते है!</p>
+            </div>
+            
+            <div class="login-card">
+                <h2 class="gold-gradient" style="font-size: 28px;">Welcome! Let's Begin</h2>
+                <p style="text-align: center; color: rgba(255, 255, 255, 0.6); margin-bottom: 25px; font-size: 14px;">Begin your journey of spiritual growth</p>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="userName">Your Name</label>
+                        <input type="text" id="userName" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="userMobile">Mobile Number</label>
+                        <input type="tel" id="userMobile" required maxlength="10" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number">
+                    </div>
+                    <button type="submit" class="btn submit-btn" style="margin-top: 10px;">
+                        <span>Start My Journey</span>
+                        <span style="margin-left: 8px;">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="appScreen" class="hidden">
+            <div class="header">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                        <!-- Animated Crescent Moon -->
+                        <svg class="animate-float" width="40" height="40" viewBox="0 0 100 100" fill="#f4d03f">
+                            <path d="M50 10C30 10 15 30 15 50s15 40 35 40c-15-10-20-25-20-40s5-30 20-40z" />
+                            <circle cx="70" cy="25" r="3" class="animate-pulse-slow" fill="#f4d03f" />
+                            <circle cx="80" cy="40" r="2" class="animate-pulse-slow" fill="#f4d03f" style="animation-delay: 0.5s" />
+                            <circle cx="75" cy="55" r="2.5" class="animate-pulse-slow" fill="#f4d03f" style="animation-delay: 1s" />
+                        </svg>
+                        <h1 class="gold-gradient" style="margin: 0; font-size: 28px;">
+                            <span class="lang-text" data-en="Ramadan Challenge" data-hi="रमज़ान चैलेंज">Ramadan Challenge</span>
+                        </h1>
+                    </div>
+                    <div class="language-toggle">
+                        <div class="lang-option active" id="lang-en" onclick="setLanguage('en')">EN</div>
+                        <div class="lang-option" id="lang-hi" onclick="setLanguage('hi')">हिं</div>
+                    </div>
+                </div>
+                <p class="greeting"><span class="lang-text" data-en="Assalamu Alaikum" data-hi="अस्सलामु अलैकुम">Assalamu Alaikum</span>, <span id="userNameDisplay"></span>!</p>
+                <div class="stage-info">
+                    <div id="stageTitle"></div>
+                </div>
+                <button class="btn logout-btn" onclick="logout()">Logout</button>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="value" id="totalPoints">0</div>
+                    <div class="label lang-text" data-en="Total Points" data-hi="कुल अंक">Total Points</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="currentDay">1</div>
+                    <div class="label lang-text" data-en="Day" data-hi="दिन">Day</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="streakCount">0</div>
+                    <div class="label lang-text" data-en="Streak" data-hi="सिलसिला">Streak</div>
+                </div>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span class="lang-text" data-en="Challenge Progress" data-hi="चैलेंज की प्रगति">Challenge Progress</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Testing Navigation (only visible in testing mode) -->
+            <div id="testingNav" class="testing-nav hidden">
+                <div style="background: #ff6b35; color: white; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px;">
+                    <strong>🧪 TESTING MODE</strong>
+                    <p style="font-size: 13px; margin-top: 5px; opacity: 0.9;">Navigate through all 30 days to test the app</p>
+                </div>
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button class="btn" onclick="previousDay()" style="flex: 1; background: #666;">
+                        ← Previous Day
+                    </button>
+                    <button class="btn" onclick="nextDay()" style="flex: 1;">
+                        Next Day →
+                    </button>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn" onclick="resetProgress()" style="flex: 1; background: #d32f2f; font-size: 14px;">
+                        🔄 Reset All Progress
+                    </button>
+                    <button class="btn" onclick="skipToDay()" style="flex: 1; background: #f57c00; font-size: 14px;">
+                        ⏭️ Jump to Day...
+                    </button>
+                </div>
+            </div>
+
+            <!-- Streak Badge -->
+            <div id="streakBadge" class="streak-badge hidden">
+                <div class="icon">🔥</div>
+                <div class="text"></div>
+            </div>
+
+            <!-- Day Completion Message -->
+            <div id="completionMessage" class="completion-card hidden">
+                <h2><span class="lang-text" data-en="✨ Alhamdulillah!" data-hi="✨ अलहम्दुलिल्लाह!">✨ Alhamdulillah!</span></h2>
+                <p><span class="lang-text" data-en="You've completed today's tasks!" data-hi="आपने आज के काम पूरे कर लिए!">You've completed today's tasks!</span></p>
+            </div>
+
+            <!-- Challenge Complete -->
+            <div id="challengeComplete" class="challenge-complete hidden">
+                <h2><span class="lang-text" data-en="🎉 Challenge Complete!" data-hi="🎉 चैलेंज पूरा हुआ!">🎉 Challenge Complete!</span></h2>
+                <p><span class="lang-text" data-en="Congratulations on completing the 30-day Ramadan Challenge!" data-hi="रमज़ान के 30 दिन के चैलेंज को पूरा करने पर मुबारकबाद!">Congratulations on completing the 30-day Ramadan Challenge!</span></p>
+                <div class="final-score" id="finalScore">0</div>
+                <p><span class="lang-text" data-en="May Allah accept your efforts!" data-hi="अल्लाह आपकी कोशिश कबूल करें!">May Allah accept your efforts!</span></p>
+            </div>
+
+            <!-- Tasks -->
+            <div id="tasksContainer" class="tasks-card">
+                <h3>
+                    <span class="day-badge"><span class="lang-text" data-en="Day" data-hi="दिन">Day</span> <span id="dayNumber">1</span></span>
+                    <span class="lang-text" data-en="Today's Tasks" data-hi="आज के काम">Today's Tasks</span>
+                </h3>
+                <div id="tasksList"></div>
+                
+                <div class="submit-section">
+                    <button class="btn submit-btn" id="submitBtn" onclick="submitTasks()">
+                        <span class="lang-text" data-en="Submit Today's Progress" data-hi="आज की प्रगति जमा करें">Submit Today's Progress</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Detail Modal -->
+        <div id="taskModal" class="modal-overlay hidden" onclick="closeModal(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <button class="modal-close" onclick="closeModal()">&times;</button>
+                    <div class="modal-title" id="modalTaskTitle"></div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-arabic" id="modalArabic"></div>
+                    <div class="modal-translation" id="modalTranslation"></div>
+                    <div class="modal-checkbox-container" onclick="toggleModalCheckbox()">
+                        <div class="modal-checkbox" id="modalCheckbox"></div>
+                        <div class="modal-checkbox-label lang-text" data-en="Mark as complete" data-hi="पूरा हुआ">Mark as complete</div>
+                    </div>
+                    <div class="modal-points-badge" id="modalPoints"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyx6hVbKdMneu5ipgAjXYbB83JVJmF_8m0Yb0--3wmcisE4P_yQs_THGGl_vw12IFAShw/exec'; // Replace with your Google Apps Script URL
+        
+        // TESTING MODE - Set to false for production
+        const TESTING_MODE = true; // Shows navigation buttons to test all 30 days
+        const TESTING_START_DATE = new Date(); // Today is Day 1 for testing
+
+        // Stage definitions
+        const STAGES = [
+            { name: "Intention & Discipline", days: [1, 2, 3, 4, 5] },
+            { name: "Self Control", days: [6, 7, 8, 9, 10] },
+            { name: "Character Refinement", days: [11, 12, 13, 14, 15] },
+            { name: "Inner Purification", days: [16, 17, 18, 19, 20] },
+            { name: "Ihsan & Excellence", days: [21, 22, 23, 24, 25] },
+            { name: "Transformation & Continuity", days: [26, 27, 28, 29, 30] }
+        ];
+
+        // Language translations (Indian spoken Urdu in Hindi script)
+        let currentLanguage = 'en'; // 'en' or 'hi'
+        
+        const TRANSLATIONS = {
+            // UI Elements
+            'Ramadan Challenge': 'रमज़ान चैलेंज',
+            'Assalamu Alaikum': 'अस्सलामु अलैकुम',
+            'Total Points': 'कुल अंक',
+            'Day': 'दिन',
+            'Streak': 'सिलसिला',
+            'Challenge Progress': 'चैलेंज की प्रगति',
+            'Today\'s Tasks': 'आज के काम',
+            'Submit Today\'s Progress': 'आज की प्रगति जमा करें',
+            'Previous Day': 'पिछला दिन',
+            'Next Day': 'अगला दिन',
+            'Reset All Progress': 'सब रीसेट करें',
+            'Jump to Day...': 'दिन पर जाएं...',
+            'Mark as complete': 'पूरा हुआ',
+            'Alhamdulillah!': 'अलहम्दुलिल्लाह!',
+            'You\'ve completed today\'s tasks!': 'आपने आज के काम पूरे कर लिए!',
+            'Challenge Complete!': 'चैलेंज पूरा हुआ!',
+            'Congratulations on completing the 30-day Ramadan Challenge!': 'रमज़ान के 30 दिन के चैलेंज को पूरा करने पर मुबारकबाद!',
+            'May Allah accept your efforts!': 'अल्लाह आपकी कोशिश कबूल करें!',
+            'Logout': 'लॉगआउट',
+            
+            // Stage names
+            'Intention & Discipline': 'नीयत और अनुशासन',
+            'Self Control': 'आत्म-नियंत्रण',
+            'Character Refinement': 'अख़लाक़ की तरबियत',
+            'Inner Purification': 'बातिनी तज़किया',
+            'Ihsan & Excellence': 'एहसान और उत्कृष्टता',
+            'Transformation & Continuity': 'तब्दीली और इस्तिकामत',
+            
+            // Task titles - All stages finalized
+            // Stage 1
+            'Prayed on time': 'वक्त पर नमाज़ पढ़ी',
+            'Said Bismillah before eating': 'खाने से पहले बिस्मिल्लाह कहा',
+            'Removed an obstacle from the path': 'रास्ते से रुकावट हटाई',
+            'Practiced gratitude (listed 3 blessings)': 'शुक्र अदा किया (3 नेअमतें लिखीं)',
+            
+            // Stage 2
+            'Learned the translation of Surah Al-Fatiha and reflected on its meaning': 'सूरह अल-फ़ातिहा का तर्जुमा सीखा और उसके मअनी पर ग़ौर किया',
+            'Said Alhamdulillah for a blessing': 'किसी नेअमत पर अलहम्दुलिल्लाह कहा',
+            'Controlled anger in a difficult situation': 'मुश्किल हालात में ग़ुस्से पर काबू रखा',
+            'Avoided gossip and backbiting': 'ग़ीबत और बदगोई से बचे',
+            
+            // Stage 3
+            'Prayed Tahajjud': 'तहज्जुद पढ़ी',
+            'Did one good deed quietly': 'चुपचाप एक नेक काम किया',
+            'Performed an act of kindness for someone': 'किसी के साथ नेकी का काम किया',
+            'Spoke kind words to family members': 'घर वालों से अच्छे लफ़्ज़ों में बात की',
+            
+            // Stage 4
+            'Reflected on Fatiha and concentrated on it while praying': 'फ़ातिहा पर ग़ौर किया और नमाज़ में उस पर तवज्जो दी',
+            'Pondered on the things Allah created in the world and said SubhanAllah': 'अल्लाह की बनाई चीज़ों पर ग़ौर किया और सुबहानअल्लाह कहा',
+            'Made sincere dua for someone else': 'किसी और के लिए दिल से दुआ की',
+            'Reflected on personal shortcomings in journal': 'अपनी कमियों पर ग़ौर किया',
+            
+            // Stage 5
+            'Thanked Allah for something small': 'किसी छोटी चीज़ पर अल्लाह का शुक्र अदा किया',
+            'Left something that I can\'t do while fasting after breaking the fast too': 'कोई ऐसी चीज़ छोड़ी जो रोज़े में नहीं कर सकता, इफ़्तार के बाद भी',
+            'Gave charity (any amount)': 'सदक़ा दिया (कोई भी रक़म)',
+            'Helped someone without expectation of return': 'किसी की मदद की बिना बदले की उम्मीद के',
+            
+            // Stage 6
+            'Learned and reflected on first 10 ayahs of Surah Al-Kahf': 'सूरह अल-कहफ़ की पहली 10 आयतें सीखीं और उन पर ग़ौर किया',
+            'Planned one good deed to continue after Ramadan': 'रमज़ान के बाद भी जारी रखने के लिए एक नेक काम की योजना बनाई',
+            'Taught someone a beneficial Islamic knowledge': 'किसी को फ़ायदेमंद इस्लामी इल्म सिखाया',
+            'Read the following ayah with translation and reflect about it': 'यह आयत तर्जुमे के साथ पढ़ें और उस पर ग़ौर करें',
+            'Reflective Day: Read the following ayah and reflect on your Week 1 progress': 'तदब्बुर का दिन: यह आयत पढ़ें और हफ़्ते 1 की प्रगति पर ग़ौर करें',
+            'Reflective Day: Read the following ayah and assess your self-control progress': 'तदब्बुर का दिन: यह आयत पढ़ें और आत्म-नियंत्रण की प्रगति का जायज़ा लें',
+            'Reflective Day: Read the following ayah and assess your character growth': 'तदब्बुर का दिन: यह आयत पढ़ें और अपने अख़लाक़ की तरक़्क़ी का जायज़ा लें',
+            'Reflective Day: Read the following ayah and assess your spiritual purification': 'तदब्बुर का दिन: यह आयत पढ़ें और अपनी रूहानी तज़किया का जायज़ा लें',
+            'Reflective Day: Read the following ayah and reflect on striving for excellence': 'तदब्बुर का दिन: यह आयत पढ़ें और उत्कृष्टता के लिए कोशिश पर ग़ौर करें',
+            'Final Reflection: Read the following ayah and reflect on your complete transformation journey': 'आख़िरी तदब्बुर: यह आयत पढ़ें और अपने पूरे सफ़र पर ग़ौर करें'
+        };
+        
+        function translate(text) {
+            if (currentLanguage === 'hi' && TRANSLATIONS[text]) {
+                return TRANSLATIONS[text];
+            }
+            return text;
+        }
+        
+        function setLanguage(lang) {
+            console.log('Setting language to:', lang);
+            currentLanguage = lang;
+            
+            // Update toggle active state
+            const langEn = document.getElementById('lang-en');
+            const langHi = document.getElementById('lang-hi');
+            if (langEn && langHi) {
+                langEn.classList.toggle('active', lang === 'en');
+                langHi.classList.toggle('active', lang === 'hi');
+            }
+            
+            // Update all text
+            updateLanguage();
+        }
+        
+        function toggleLanguage() {
+            // Keep this for backward compatibility
+            const newLang = currentLanguage === 'en' ? 'hi' : 'en';
+            setLanguage(newLang);
+        }
+        
+        function updateLanguage() {
+            // Update all elements with lang-text class
+            document.querySelectorAll('.lang-text').forEach(el => {
+                const key = currentLanguage === 'en' ? 'data-en' : 'data-hi';
+                if (el.hasAttribute(key)) {
+                    el.textContent = el.getAttribute(key);
+                }
+            });
+            
+            // Refresh UI to update all translated content
+            if (userData.mobile) {
+                updateUI();
+            }
+        }
+
+        // Daily tasks and Quranic verses - FINALIZED
+        const TASKS_DATA = {
+            // Stage 1: Intention & Discipline (Days 1-5)
+            1: {
+                tasks: [
+                    { title: "Prayed on time", points: 10 },
+                    { title: "Said Bismillah before eating", points: 10 },
+                    { title: "Removed an obstacle from the path", points: 10 },
+                    { title: "Practiced gratitude (listed 3 blessings)", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا",
+                    ayah: "Indeed, prayer has been decreed upon the believers at fixed times. (An-Nisa 4:103)",
+                    ayahHindi: "बेशक, मोमिनों पर नमाज़ वक्त के साथ फ़र्ज़ की गई है। (अन-निसा 4:103)",
+                    relatesTo: "Prayer" 
+                }
+            },
+            2: {
+                tasks: [
+                    { title: "Prayed on time", points: 10 },
+                    { title: "Said Bismillah before eating", points: 10 },
+                    { title: "Removed an obstacle from the path", points: 10 },
+                    { title: "Practiced gratitude (listed 3 blessings)", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "فَكُلُوا مِمَّا رَزَقَكُمُ اللَّهُ حَلَالًا طَيِّبًا وَاشْكُرُوا نِعْمَتَ اللَّهِ",
+                    ayah: "So eat of what Allah has provided for you [which is] lawful and good. And be grateful for the favor of Allah. (An-Nahl 16:114)",
+                    ayahHindi: "तो खाओ जो अल्लाह ने तुम्हें दिया है जो हलाल और पाक है। और अल्लाह की नेअमत का शुक्र अदा करो। (अन-नहल 16:114)",
+                    relatesTo: "Bismillah" 
+                }
+            },
+            3: {
+                tasks: [
+                    { title: "Prayed on time", points: 10 },
+                    { title: "Said Bismillah before eating", points: 10 },
+                    { title: "Removed an obstacle from the path", points: 10 },
+                    { title: "Practiced gratitude (listed 3 blessings)", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَمَن يَعْمَلْ مِنَ الصَّالِحَاتِ مِن ذَكَرٍ أَوْ أُنثَىٰ وَهُوَ مُؤْمِنٌ فَأُولَٰئِكَ يَدْخُلُونَ الْجَنَّةَ",
+                    ayah: "And whoever does righteous deeds, whether male or female, while being a believer - those will enter Paradise. (An-Nisa 4:124)",
+                    ayahHindi: "और जो नेक काम करे, मर्द हो या औरत, और वो मोमिन हो - तो ऐसे लोग जन्नत में दाख़िल होंगे। (अन-निसा 4:124)",
+                    relatesTo: "Good Deeds" 
+                }
+            },
+            4: {
+                tasks: [
+                    { title: "Prayed on time", points: 10 },
+                    { title: "Said Bismillah before eating", points: 10 },
+                    { title: "Removed an obstacle from the path", points: 10 },
+                    { title: "Practiced gratitude (listed 3 blessings)", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+                    ayah: "If you are grateful, I will surely increase you [in favor]. (Ibrahim 14:7)",
+                    ayahHindi: "अगर तुम शुक्र अदा करोगे तो मैं ज़रूर तुम्हें और ज़्यादा दूँगा। (इब्राहीम 14:7)",
+                    relatesTo: "Gratitude" 
+                }
+            },
+            5: {
+                tasks: [
+                    { title: "Prayed on time", points: 10 },
+                    { title: "Said Bismillah before eating", points: 10 },
+                    { title: "Removed an obstacle from the path", points: 10 },
+                    { title: "Practiced gratitude (listed 3 blessings)", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Reflective Day: Read the following ayah and reflect on your Week 1 progress", 
+                    points: 20,
+                    arabic: "قُلْ إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ",
+                    ayah: "Say, 'Indeed, my prayer, my rites of sacrifice, my living and my dying are for Allah, Lord of the worlds.' (Al-An'am 6:162)",
+                    ayahHindi: "कह दो, 'बेशक मेरी नमाज़, मेरी कुर्बानी, मेरी ज़िन्दगी और मेरी मौत अल्लाह के लिए है जो तमाम जहाँ का रब है।' (अल-अनआम 6:162)",
+                    relatesTo: "Stage Summary" 
+                }
+            },
+
+            // Stage 2: Self Control (Days 6-10)
+            6: {
+                tasks: [
+                    { title: "Learned the translation of Surah Al-Fatiha and reflected on its meaning", points: 10 },
+                    { title: "Said Alhamdulillah for a blessing", points: 10 },
+                    { title: "Controlled anger in a difficult situation", points: 10 },
+                    { title: "Avoided gossip and backbiting", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+                    ayah: "All praise is due to Allah, Lord of the worlds. (Al-Fatiha 1:2)",
+                    ayahHindi: "तमाम तारीफ़ अल्लाह के लिए है जो तमाम जहाँ का रब है। (अल-फ़ातिहा 1:2)",
+                    relatesTo: "Al-Fatiha" 
+                }
+            },
+            7: {
+                tasks: [
+                    { title: "Learned the translation of Surah Al-Fatiha and reflected on its meaning", points: 10 },
+                    { title: "Said Alhamdulillah for a blessing", points: 10 },
+                    { title: "Controlled anger in a difficult situation", points: 10 },
+                    { title: "Avoided gossip and backbiting", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
+                    ayah: "So remember Me; I will remember you. And be grateful to Me and do not deny Me. (Al-Baqarah 2:152)",
+                    ayahHindi: "तो मुझे याद करो, मैं तुम्हें याद करूँगा। और मेरा शुक्र अदा करो और नाशुक्री न करो। (अल-बक़रह 2:152)",
+                    relatesTo: "Alhamdulillah" 
+                }
+            },
+            8: {
+                tasks: [
+                    { title: "Learned the translation of Surah Al-Fatiha and reflected on its meaning", points: 10 },
+                    { title: "Said Alhamdulillah for a blessing", points: 10 },
+                    { title: "Controlled anger in a difficult situation", points: 10 },
+                    { title: "Avoided gossip and backbiting", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ وَاللَّهُ يُحِبُّ الْمُحْسِنِينَ",
+                    ayah: "And those who restrain anger and pardon people - and Allah loves the doers of good. (Al-Imran 3:134)",
+                    ayahHindi: "और वो जो ग़ुस्सा पी जाते हैं और लोगों को माफ़ कर देते हैं - और अल्लाह नेकी करने वालों से मोहब्बत करता है। (आले-इमरान 3:134)",
+                    relatesTo: "Controlling Anger" 
+                }
+            },
+            9: {
+                tasks: [
+                    { title: "Learned the translation of Surah Al-Fatiha and reflected on its meaning", points: 10 },
+                    { title: "Said Alhamdulillah for a blessing", points: 10 },
+                    { title: "Controlled anger in a difficult situation", points: 10 },
+                    { title: "Avoided gossip and backbiting", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَلَا تَجَسَّسُوا وَلَا يَغْتَب بَّعْضُكُم بَعْضًا",
+                    ayah: "And do not spy or backbite each other. Would one of you like to eat the flesh of his brother when dead? (Al-Hujurat 49:12)",
+                    ayahHindi: "और न टोह लो और न एक दूसरे की ग़ीबत करो। क्या तुममें से कोई पसंद करेगा कि अपने मुर्दा भाई का गोश्त खाए? (अल-हुजुरात 49:12)",
+                    relatesTo: "Avoiding Gossip" 
+                }
+            },
+            10: {
+                tasks: [
+                    { title: "Learned the translation of Surah Al-Fatiha and reflected on its meaning", points: 10 },
+                    { title: "Said Alhamdulillah for a blessing", points: 10 },
+                    { title: "Controlled anger in a difficult situation", points: 10 },
+                    { title: "Avoided gossip and backbiting", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Reflective Day: Read the following ayah and assess your self-control progress", 
+                    points: 20,
+                    arabic: "إِنَّمَا يُوَفَّى الصَّابِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ",
+                    ayah: "Indeed, the patient will be given their reward without account. (Az-Zumar 39:10)",
+                    ayahHindi: "बेशक सब्र करने वालों को उनका अज्र बेहिसाब दिया जाएगा। (अज़-ज़ुमर 39:10)",
+                    relatesTo: "Stage Summary" 
+                }
+            },
+
+            // Stage 3: Character Refinement (Days 11-15)
+            11: {
+                tasks: [
+                    { title: "Prayed Tahajjud", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Performed an act of kindness for someone", points: 10 },
+                    { title: "Spoke kind words to family members", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَمِنَ اللَّيْلِ فَتَهَجَّدْ بِهِ نَافِلَةً لَّكَ",
+                    ayah: "And from [part of] the night, pray with it as additional [worship] for you. (Al-Isra 17:79)",
+                    ayahHindi: "और रात के कुछ हिस्से में तहज्जुद पढ़ो, यह तुम्हारे लिए नफ़िल है। (अल-इसरा 17:79)",
+                    relatesTo: "Tahajjud" 
+                }
+            },
+            12: {
+                tasks: [
+                    { title: "Prayed Tahajjud", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Performed an act of kindness for someone", points: 10 },
+                    { title: "Spoke kind words to family members", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "إِن تُبْدُوا الصَّدَقَاتِ فَنِعِمَّا هِيَ وَإِن تُخْفُوهَا وَتُؤْتُوهَا الْفُقَرَاءَ فَهُوَ خَيْرٌ لَّكُمْ",
+                    ayah: "If you disclose your charitable expenditures, they are good; but if you conceal them and give them to the poor, it is better for you. (Al-Baqarah 2:271)",
+                    ayahHindi: "अगर तुम अपने सदक़ात ज़ाहिर करो तो अच्छा है, और अगर छुपाओ और ग़रीबों को दो तो तुम्हारे लिए बेहतर है। (अल-बक़रह 2:271)",
+                    relatesTo: "Secret Good Deeds" 
+                }
+            },
+            13: {
+                tasks: [
+                    { title: "Prayed Tahajjud", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Performed an act of kindness for someone", points: 10 },
+                    { title: "Spoke kind words to family members", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَافْعَلُوا الْخَيْرَ لَعَلَّكُمْ تُفْلِحُونَ",
+                    ayah: "And do good that you may succeed. (Al-Hajj 22:77)",
+                    ayahHindi: "और नेकी करो ताकि तुम कामयाब हो। (अल-हज्ज 22:77)",
+                    relatesTo: "Kindness" 
+                }
+            },
+            14: {
+                tasks: [
+                    { title: "Prayed Tahajjud", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Performed an act of kindness for someone", points: 10 },
+                    { title: "Spoke kind words to family members", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَقُولُوا لِلنَّاسِ حُسْنًا",
+                    ayah: "And speak to people good [words]. (Al-Baqarah 2:83)",
+                    ayahHindi: "और लोगों से अच्छे लफ़्ज़ों में बात करो। (अल-बक़रह 2:83)",
+                    relatesTo: "Kind Words" 
+                }
+            },
+            15: {
+                tasks: [
+                    { title: "Prayed Tahajjud", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Performed an act of kindness for someone", points: 10 },
+                    { title: "Spoke kind words to family members", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Reflective Day: Read the following ayah and assess your character growth", 
+                    points: 20,
+                    arabic: "وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ",
+                    ayah: "And indeed, you are of a great moral character. (Al-Qalam 68:4)",
+                    ayahHindi: "और बेशक, आप बहुत बड़े अख़लाक़ वाले हैं। (अल-क़लम 68:4)",
+                    relatesTo: "Stage Summary" 
+                }
+            },
+
+            // Stage 4: Inner Purification (Days 16-20)
+            16: {
+                tasks: [
+                    { title: "Reflected on Fatiha and concentrated on it while praying", points: 10 },
+                    { title: "Pondered on the things Allah created in the world and said SubhanAllah", points: 10 },
+                    { title: "Made sincere dua for someone else", points: 10 },
+                    { title: "Reflected on personal shortcomings in journal", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "قَدْ أَفْلَحَ الْمُؤْمِنُونَ الَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ",
+                    ayah: "Successful indeed are the believers who are humble in their prayers. (Al-Mu'minun 23:1-2)",
+                    ayahHindi: "बेशक कामयाब हुए वो मोमिन जो अपनी नमाज़ों में खुशू करते हैं। (अल-मोमिनून 23:1-2)",
+                    relatesTo: "Prayer Concentration" 
+                }
+            },
+            17: {
+                tasks: [
+                    { title: "Reflected on Fatiha and concentrated on it while praying", points: 10 },
+                    { title: "Pondered on the things Allah created in the world and said SubhanAllah", points: 10 },
+                    { title: "Made sincere dua for someone else", points: 10 },
+                    { title: "Reflected on personal shortcomings in journal", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ",
+                    ayah: "Indeed, in the creation of the heavens and the earth and the alternation of the night and the day are signs for those of understanding. (Al-Imran 3:190)",
+                    ayahHindi: "बेशक आसमानों और ज़मीन की पैदाइश में और रात-दिन के बदलने में अक़्ल वालों के लिए निशानियाँ हैं। (आले-इमरान 3:190)",
+                    relatesTo: "Pondering Creation" 
+                }
+            },
+            18: {
+                tasks: [
+                    { title: "Reflected on Fatiha and concentrated on it while praying", points: 10 },
+                    { title: "Pondered on the things Allah created in the world and said SubhanAllah", points: 10 },
+                    { title: "Made sincere dua for someone else", points: 10 },
+                    { title: "Reflected on personal shortcomings in journal", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَالَّذِينَ جَاءُوا مِن بَعْدِهِمْ يَقُولُونَ رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا",
+                    ayah: "And those who came after them say, 'Our Lord, forgive us and our brothers.' (Al-Hashr 59:10)",
+                    ayahHindi: "और वो जो उनके बाद आए कहते हैं, 'ऐ हमारे रब! हमें और हमारे भाइयों को माफ़ कर।' (अल-हश्र 59:10)",
+                    relatesTo: "Dua for Others" 
+                }
+            },
+            19: {
+                tasks: [
+                    { title: "Reflected on Fatiha and concentrated on it while praying", points: 10 },
+                    { title: "Pondered on the things Allah created in the world and said SubhanAllah", points: 10 },
+                    { title: "Made sincere dua for someone else", points: 10 },
+                    { title: "Reflected on personal shortcomings in journal", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا",
+                    ayah: "O you who have believed, repent to Allah with sincere repentance. (At-Tahrim 66:8)",
+                    ayahHindi: "ऐ ईमान वालो! अल्लाह से सच्ची तौबा करो। (अत-तहरीम 66:8)",
+                    relatesTo: "Self-Reflection" 
+                }
+            },
+            20: {
+                tasks: [
+                    { title: "Reflected on Fatiha and concentrated on it while praying", points: 10 },
+                    { title: "Pondered on the things Allah created in the world and said SubhanAllah", points: 10 },
+                    { title: "Made sincere dua for someone else", points: 10 },
+                    { title: "Reflected on personal shortcomings in journal", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Reflective Day: Read the following ayah and assess your spiritual purification", 
+                    points: 20,
+                    arabic: "قَدْ أَفْلَحَ مَن زَكَّاهَا",
+                    ayah: "He has succeeded who purifies himself. (Al-A'la 87:14)",
+                    ayahHindi: "बेशक कामयाब हुआ जिसने अपने नफ़्स को पाक किया। (अल-आला 87:14)",
+                    relatesTo: "Stage Summary" 
+                }
+            },
+
+            // Stage 5: Ihsan & Excellence (Days 21-25)
+            21: {
+                tasks: [
+                    { title: "Thanked Allah for something small", points: 10 },
+                    { title: "Left something that I can't do while fasting after breaking the fast too", points: 10 },
+                    { title: "Gave charity (any amount)", points: 10 },
+                    { title: "Helped someone without expectation of return", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+                    ayah: "And [remember] when your Lord proclaimed, 'If you are grateful, I will surely increase you [in favor].' (Ibrahim 14:7)",
+                    ayahHindi: "और याद करो जब तुम्हारे रब ने एलान किया, 'अगर तुम शुक्र अदा करोगे तो मैं ज़रूर तुम्हें ज़्यादा दूँगा।' (इब्राहीम 14:7)",
+                    relatesTo: "Thanking Allah" 
+                }
+            },
+            22: {
+                tasks: [
+                    { title: "Thanked Allah for something small", points: 10 },
+                    { title: "Left something that I can't do while fasting after breaking the fast too", points: 10 },
+                    { title: "Gave charity (any amount)", points: 10 },
+                    { title: "Helped someone without expectation of return", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَاعْبُدْ رَبَّكَ حَتَّىٰ يَأْتِيَكَ الْيَقِينُ",
+                    ayah: "And worship your Lord until there comes to you the certainty [death]. (Al-Hijr 15:99)",
+                    ayahHindi: "और अपने रब की इबादत करो यहाँ तक कि तुम्हें यक़ीन (मौत) आ जाए। (अल-हिज्र 15:99)",
+                    relatesTo: "Continuity" 
+                }
+            },
+            23: {
+                tasks: [
+                    { title: "Thanked Allah for something small", points: 10 },
+                    { title: "Left something that I can't do while fasting after breaking the fast too", points: 10 },
+                    { title: "Gave charity (any amount)", points: 10 },
+                    { title: "Helped someone without expectation of return", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "مَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ",
+                    ayah: "The example of those who spend their wealth in the way of Allah is like a seed which grows seven spikes. (Al-Baqarah 2:261)",
+                    ayahHindi: "जो लोग अल्लाह की राह में अपना माल ख़र्च करते हैं उनकी मिसाल ऐसी है जैसे एक दाना जिससे सात बालियाँ उगीं। (अल-बक़रह 2:261)",
+                    relatesTo: "Charity" 
+                }
+            },
+            24: {
+                tasks: [
+                    { title: "Thanked Allah for something small", points: 10 },
+                    { title: "Left something that I can't do while fasting after breaking the fast too", points: 10 },
+                    { title: "Gave charity (any amount)", points: 10 },
+                    { title: "Helped someone without expectation of return", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "إِنَّمَا نُطْعِمُكُمْ لِوَجْهِ اللَّهِ لَا نُرِيدُ مِنكُمْ جَزَاءً وَلَا شُكُورًا",
+                    ayah: "We feed you only for the countenance of Allah. We wish not from you reward or gratitude. (Al-Insan 76:9)",
+                    ayahHindi: "हम तुम्हें सिर्फ़ अल्लाह की ख़ातिर खाना खिलाते हैं। हम तुमसे न बदला चाहते हैं न शुक्रिया। (अल-इंसान 76:9)",
+                    relatesTo: "Helping Others" 
+                }
+            },
+            25: {
+                tasks: [
+                    { title: "Thanked Allah for something small", points: 10 },
+                    { title: "Left something that I can't do while fasting after breaking the fast too", points: 10 },
+                    { title: "Gave charity (any amount)", points: 10 },
+                    { title: "Helped someone without expectation of return", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Reflective Day: Read the following ayah and reflect on striving for excellence", 
+                    points: 20,
+                    arabic: "وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا",
+                    ayah: "And those who strive for Us - We will surely guide them to Our ways. (Al-Ankabut 29:69)",
+                    ayahHindi: "और जो लोग हमारे लिए कोशिश करते हैं - हम ज़रूर उन्हें अपने रास्तों की हिदायत देंगे। (अल-अनकबूत 29:69)",
+                    relatesTo: "Stage Summary" 
+                }
+            },
+
+            // Stage 6: Transformation & Continuity (Days 26-30)
+            26: {
+                tasks: [
+                    { title: "Learned and reflected on first 10 ayahs of Surah Al-Kahf", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Planned one good deed to continue after Ramadan", points: 10 },
+                    { title: "Taught someone a beneficial Islamic knowledge", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "الْحَمْدُ لِلَّهِ الَّذِي أَنزَلَ عَلَىٰ عَبْدِهِ الْكِتَابَ وَلَمْ يَجْعَل لَّهُ عِوَجًا",
+                    ayah: "All praise is due to Allah, who has sent down upon His Servant the Book and has not made therein any deviance. (Al-Kahf 18:1)",
+                    ayahHindi: "तमाम तारीफ़ अल्लाह के लिए है जिसने अपने बंदे पर किताब नाज़िल की और उसमें कोई टेढ़ापन नहीं रखा। (अल-कहफ़ 18:1)",
+                    relatesTo: "Surah Al-Kahf" 
+                }
+            },
+            27: {
+                tasks: [
+                    { title: "Learned and reflected on first 10 ayahs of Surah Al-Kahf", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Planned one good deed to continue after Ramadan", points: 10 },
+                    { title: "Taught someone a beneficial Islamic knowledge", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "الَّذِينَ يُنفِقُونَ أَمْوَالَهُم بِاللَّيْلِ وَالنَّهَارِ سِرًّا وَعَلَانِيَةً",
+                    ayah: "Those who spend their wealth by night and day, secretly and publicly. (Al-Baqarah 2:274)",
+                    ayahHindi: "वो जो अपना माल रात और दिन, छुपे और खुले में ख़र्च करते हैं। (अल-बक़रह 2:274)",
+                    relatesTo: "Secret Good Deeds" 
+                }
+            },
+            28: {
+                tasks: [
+                    { title: "Learned and reflected on first 10 ayahs of Surah Al-Kahf", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Planned one good deed to continue after Ramadan", points: 10 },
+                    { title: "Taught someone a beneficial Islamic knowledge", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "إِنَّ أَحَبَّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ",
+                    ayah: "Indeed, the most beloved of deeds to Allah are those that are consistent, even if small. (Hadith - Bukhari)",
+                    ayahHindi: "बेशक अल्लाह को सबसे पसंदीदा आमाल वो हैं जो मुसलसल हों, चाहे छोटे ही क्यों न हों। (हदीस - बुख़ारी)",
+                    relatesTo: "Planning Continuity" 
+                }
+            },
+            29: {
+                tasks: [
+                    { title: "Learned and reflected on first 10 ayahs of Surah Al-Kahf", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Planned one good deed to continue after Ramadan", points: 10 },
+                    { title: "Taught someone a beneficial Islamic knowledge", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Read the following ayah with translation and reflect about it", 
+                    points: 20,
+                    arabic: "وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ",
+                    ayah: "And remind, for indeed, the reminder benefits the believers. (Adh-Dhariyat 51:55)",
+                    ayahHindi: "और याद दिलाओ, क्योंकि याद दिलाना मोमिनों को फ़ायदा पहुँचाता है। (अध-धारियात 51:55)",
+                    relatesTo: "Teaching Knowledge" 
+                }
+            },
+            30: {
+                tasks: [
+                    { title: "Learned and reflected on first 10 ayahs of Surah Al-Kahf", points: 10 },
+                    { title: "Did one good deed quietly", points: 10 },
+                    { title: "Planned one good deed to continue after Ramadan", points: 10 },
+                    { title: "Taught someone a beneficial Islamic knowledge", points: 10 }
+                ],
+                quranTask: { 
+                    title: "Final Reflection: Read the following ayah and reflect on your complete transformation journey", 
+                    points: 20,
+                    arabic: "إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ",
+                    ayah: "Indeed, Allah will not change the condition of a people until they change what is in themselves. (Ar-Ra'd 13:11)",
+                    ayahHindi: "बेशक अल्लाह किसी क़ौम की हालत को नहीं बदलता जब तक वो अपनी हालत न बदलें। (अर-रअद 13:11)",
+                    relatesTo: "Stage Summary" 
+                }
+            }
+        };
+
+
+        // State management
+        let userData = {
+            name: '',
+            mobile: '',
+            completedDays: {},
+            totalPoints: 0,
+            currentStreak: 0,
+            lastCompletedDay: 0
+        };
+
+        // Initialize app
+        function init() {
+            console.log('App initializing...');
+            loadUserData();
+            console.log('User data loaded:', userData);
+            
+            // Initialize testing day if in testing mode
+            if (TESTING_MODE && !userData.testingDay) {
+                userData.testingDay = 1;
+                saveUserData();
+            }
+            
+            // Set up login form event listener
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                console.log('Login form found, adding event listener');
+                loginForm.addEventListener('submit', function(e) {
+                    console.log('Form submitted!');
+                    e.preventDefault();
+                    const name = document.getElementById('userName').value.trim();
+                    const mobile = document.getElementById('userMobile').value.trim();
+                    
+                    console.log('Name:', name, 'Mobile:', mobile);
+                    
+                    if (name && mobile) {
+                        userData.name = name;
+                        userData.mobile = mobile;
+                        saveUserData();
+                        console.log('Showing app...');
+                        showApp();
+                    } else {
+                        alert('Please enter both name and mobile number');
+                    }
+                });
+            } else {
+                console.error('Login form not found!');
+            }
+            
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+            
+            if (userData.mobile) {
+                console.log('User already logged in, showing app');
+                showApp();
+            } else {
+                console.log('No user data, showing login');
+                showLogin();
+            }
+            
+            // Generate animated stars
+            generateStars();
+        }
+        
+        // Generate animated stars background
+        function generateStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            if (!starsContainer) return;
+            
+            const numberOfStars = 100;
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (3 + Math.random() * 3) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Testing Mode Functions
+        function nextDay() {
+            if (!TESTING_MODE) return;
+            const currentDay = userData.testingDay || 1;
+            if (currentDay < 30) {
+                userData.testingDay = currentDay + 1;
+                saveUserData();
+                updateUI();
+            } else {
+                alert('Already at Day 30!');
+            }
+        }
+
+        function previousDay() {
+            if (!TESTING_MODE) return;
+            const currentDay = userData.testingDay || 1;
+            if (currentDay > 1) {
+                userData.testingDay = currentDay - 1;
+                saveUserData();
+                updateUI();
+            } else {
+                alert('Already at Day 1!');
+            }
+        }
+
+        function skipToDay() {
+            if (!TESTING_MODE) return;
+            const day = prompt('Enter day number (1-30):');
+            const dayNum = parseInt(day);
+            if (dayNum >= 1 && dayNum <= 30) {
+                userData.testingDay = dayNum;
+                saveUserData();
+                updateUI();
+            } else {
+                alert('Please enter a valid day between 1 and 30');
+            }
+        }
+
+        function resetProgress() {
+            if (!TESTING_MODE) return;
+            if (confirm('Are you sure you want to reset ALL progress? This will clear all completed days and points.')) {
+                userData.completedDays = {};
+                userData.totalPoints = 0;
+                userData.currentStreak = 0;
+                userData.lastCompletedDay = 0;
+                userData.testingDay = 1;
+                saveUserData();
+                updateUI();
+                alert('Progress reset! Starting fresh from Day 1.');
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('appScreen').classList.add('hidden');
+        }
+
+        function showApp() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('appScreen').classList.remove('hidden');
+            document.getElementById('userNameDisplay').textContent = userData.name;
+            
+            // Initialize language button text
+            updateLanguageButton();
+            
+            updateUI();
+        }
+        
+        function updateLanguageButton() {
+            // Update toggle switch active state
+            const langEn = document.getElementById('lang-en');
+            const langHi = document.getElementById('lang-hi');
+            if (langEn && langHi) {
+                langEn.classList.toggle('active', currentLanguage === 'en');
+                langHi.classList.toggle('active', currentLanguage === 'hi');
+                console.log('Language toggle updated. Current language:', currentLanguage);
+            } else {
+                console.log('Language toggle elements not found!');
+            }
+        }
+
+        // Calculate current day (1-30)
+        function getCurrentDay() {
+            if (TESTING_MODE) {
+                // In testing mode, use manual day counter
+                return userData.testingDay || 1;
+            }
+            
+            // Production mode - calculate based on Ramadan start date
+            const today = new Date();
+            const ramadanStart = new Date('2026-02-14'); // Update this to actual Ramadan start date
+            const diffTime = Math.abs(today - ramadanStart);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return Math.min(Math.max(1, diffDays), 30);
+        }
+
+        // Get current stage
+        function getCurrentStage(day) {
+            return STAGES.find(stage => stage.days.includes(day));
+        }
+
+        // Update UI
+        function updateUI() {
+            const currentDay = getCurrentDay();
+            const stage = getCurrentStage(currentDay);
+            
+            // Show/hide testing navigation
+            const testingNav = document.getElementById('testingNav');
+            if (testingNav) {
+                if (TESTING_MODE) {
+                    testingNav.classList.remove('hidden');
+                } else {
+                    testingNav.classList.add('hidden');
+                }
+            }
+            
+            // Update header
+            const translatedStageName = translate(stage.name);
+            const daysText = currentLanguage === 'en' ? 'Days' : 'दिन';
+            document.getElementById('stageTitle').innerHTML = `
+                Stage ${STAGES.indexOf(stage) + 1}: ${translatedStageName}<br>
+                <small style="opacity: 0.8;">${daysText} ${stage.days[0]} - ${stage.days[stage.days.length - 1]}</small>
+            `;
+            
+            // Update stats
+            document.getElementById('totalPoints').textContent = userData.totalPoints;
+            document.getElementById('currentDay').textContent = currentDay;
+            document.getElementById('streakCount').textContent = userData.currentStreak;
+            
+            // Update progress
+            const progress = (currentDay / 30) * 100;
+            document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            // Check if day already completed
+            if (userData.completedDays[currentDay]) {
+                showCompletionMessage();
+            } else {
+                loadTasks(currentDay);
+            }
+
+            // Check if challenge is complete
+            if (currentDay > 30 || Object.keys(userData.completedDays).length === 30) {
+                showChallengeComplete();
+            }
+
+            // Show streak badge if applicable
+            updateStreakBadge();
+        }
+
+        function loadTasks(day) {
+            const dayData = TASKS_DATA[day];
+            if (!dayData) return;
+
+            document.getElementById('dayNumber').textContent = day;
+            document.getElementById('completionMessage').classList.add('hidden');
+            document.getElementById('tasksContainer').classList.remove('hidden');
+
+            const tasksList = document.getElementById('tasksList');
+            tasksList.innerHTML = '';
+
+            // Add regular tasks
+            dayData.tasks.forEach((task, index) => {
+                const taskEl = createTaskElement(task, `task-${index}`);
+                tasksList.appendChild(taskEl);
+            });
+
+            // Add Quran task
+            const quranTaskEl = createTaskElement(dayData.quranTask, 'quran-task', true);
+            tasksList.appendChild(quranTaskEl);
+        }
+
+        function createTaskElement(task, id, isQuranTask = false) {
+            const div = document.createElement('div');
+            div.className = 'task-item';
+            
+            // Store task data for modal
+            div.dataset.taskId = id;
+            div.dataset.taskData = JSON.stringify(task);
+            
+            const translatedTitle = translate(task.title);
+            const pointsText = currentLanguage === 'en' ? 'pts' : 'अंक';
+            
+            // Only Quran task (5th task) opens modal, others just tick
+            const contentClickHandler = isQuranTask ? `onclick="openTaskModal('${id}')"` : '';
+            
+            // For Quran task: show Arabic if available, otherwise show translation as fallback
+            let ayahDisplay = '';
+            if (isQuranTask) {
+                if (task.arabic) {
+                    ayahDisplay = `<div class="task-ayah">${task.arabic}</div>`;
+                } else if (task.ayah) {
+                    // Fallback for days without Arabic text yet
+                    ayahDisplay = `<div class="task-ayah">${task.ayah}</div>`;
+                }
+            }
+            
+            div.innerHTML = `
+                <div class="task-checkbox" id="${id}" onclick="event.stopPropagation(); toggleTask('${id}')"></div>
+                <div class="task-content" ${contentClickHandler}>
+                    <div class="task-title">${translatedTitle}</div>
+                    ${ayahDisplay}
+                </div>
+                <div class="task-points">+${task.points} ${pointsText}</div>
+            `;
+            return div;
+        }
+
+        function toggleTask(taskId) {
+            const checkbox = document.getElementById(taskId);
+            checkbox.classList.toggle('checked');
+            checkbox.closest('.task-item').classList.toggle('completed');
+        }
+
+        // Modal Functions
+        let currentModalTaskId = null;
+
+        function openTaskModal(taskId) {
+            const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
+            if (!taskElement) return;
+            
+            const taskData = JSON.parse(taskElement.dataset.taskData);
+            currentModalTaskId = taskId;
+            
+            // Populate modal with translated content
+            const translatedTitle = translate(taskData.title);
+            const pointsText = currentLanguage === 'en' ? 'points' : 'अंक';
+            document.getElementById('modalTaskTitle').textContent = translatedTitle;
+            document.getElementById('modalPoints').textContent = `+${taskData.points} ${pointsText}`;
+            
+            // Show Arabic text if available
+            const arabicEl = document.getElementById('modalArabic');
+            if (taskData.arabic) {
+                arabicEl.textContent = taskData.arabic;
+                arabicEl.style.display = 'block';
+            } else {
+                arabicEl.style.display = 'none';
+            }
+            
+            // Show translation based on selected language
+            const translationEl = document.getElementById('modalTranslation');
+            if (currentLanguage === 'hi' && taskData.ayahHindi) {
+                translationEl.textContent = taskData.ayahHindi;
+                translationEl.style.display = 'block';
+            } else if (taskData.ayah) {
+                translationEl.textContent = taskData.ayah;
+                translationEl.style.display = 'block';
+            } else {
+                translationEl.style.display = 'none';
+            }
+            
+            // Sync checkbox state
+            const checkbox = document.getElementById(taskId);
+            const modalCheckbox = document.getElementById('modalCheckbox');
+            if (checkbox && checkbox.classList.contains('checked')) {
+                modalCheckbox.classList.add('checked');
+            } else {
+                modalCheckbox.classList.remove('checked');
+            }
+            
+            // Show modal
+            document.getElementById('taskModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeModal(event) {
+            // Close if clicking overlay or close button
+            if (!event || event.target.classList.contains('modal-overlay') || event.type === 'click') {
+                document.getElementById('taskModal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                currentModalTaskId = null;
+            }
+        }
+
+        function toggleModalCheckbox() {
+            if (!currentModalTaskId) return;
+            
+            const modalCheckbox = document.getElementById('modalCheckbox');
+            const taskCheckbox = document.getElementById(currentModalTaskId);
+            
+            // Toggle both checkboxes
+            modalCheckbox.classList.toggle('checked');
+            
+            if (taskCheckbox) {
+                if (modalCheckbox.classList.contains('checked')) {
+                    taskCheckbox.classList.add('checked');
+                    taskCheckbox.closest('.task-item').classList.add('completed');
+                } else {
+                    taskCheckbox.classList.remove('checked');
+                    taskCheckbox.closest('.task-item').classList.remove('completed');
+                }
+            }
+        }
+
+        function submitTasks() {
+            const currentDay = getCurrentDay();
+            const dayData = TASKS_DATA[currentDay];
+            
+            // In testing mode, allow resubmission
+            if (TESTING_MODE && userData.completedDays[currentDay]) {
+                if (!confirm('This day is already completed. Re-submit and update points?')) {
+                    return;
+                }
+                // Subtract previous points
+                const previousPoints = userData.completedDays[currentDay].points;
+                userData.totalPoints -= previousPoints;
+            }
+            
+            // Count completed tasks
+            let completedCount = 0;
+            let earnedPoints = 0;
+
+            // Check regular tasks
+            dayData.tasks.forEach((task, index) => {
+                const checkbox = document.getElementById(`task-${index}`);
+                if (checkbox && checkbox.classList.contains('checked')) {
+                    completedCount++;
+                    earnedPoints += task.points;
+                }
+            });
+
+            // Check Quran task
+            const quranCheckbox = document.getElementById('quran-task');
+            if (quranCheckbox && quranCheckbox.classList.contains('checked')) {
+                completedCount++;
+                earnedPoints += dayData.quranTask.points;
+            }
+
+            if (completedCount === 0) {
+                alert('Please complete at least one task before submitting.');
+                return;
+            }
+
+            // Calculate streak
+            let newStreak = 1;
+            if (userData.lastCompletedDay === currentDay - 1) {
+                newStreak = userData.currentStreak + 1;
+            }
+
+            // Award streak bonus every 5 days
+            let streakBonus = 0;
+            if (newStreak % 5 === 0) {
+                streakBonus = 50;
+                earnedPoints += streakBonus;
+            }
+
+            // Update user data
+            userData.completedDays[currentDay] = {
+                tasks: completedCount,
+                points: earnedPoints,
+                timestamp: new Date().toISOString()
+            };
+            userData.totalPoints += earnedPoints;
+            userData.currentStreak = newStreak;
+            userData.lastCompletedDay = currentDay;
+
+            saveUserData();
+            sendToGoogleSheets(currentDay, completedCount, earnedPoints, streakBonus);
+            showCompletionMessage(earnedPoints, streakBonus);
+        }
+
+        function showCompletionMessage(points, streakBonus) {
+            document.getElementById('tasksContainer').classList.add('hidden');
+            const completionMsg = document.getElementById('completionMessage');
+            completionMsg.classList.remove('hidden');
+            
+            if (streakBonus > 0) {
+                completionMsg.innerHTML = `
+                    <h2>✨ Alhamdulillah!</h2>
+                    <p>You've completed today's tasks!</p>
+                    <p style="margin-top: 10px; font-size: 18px; font-weight: 600;">
+                        +${points} points (including ${streakBonus} streak bonus!)
+                    </p>
+                `;
+            }
+
+            updateUI();
+        }
+
+        function updateStreakBadge() {
+            const badge = document.getElementById('streakBadge');
+            const streak = userData.currentStreak;
+
+            if (streak >= 5) {
+                badge.classList.remove('hidden');
+                const nextMilestone = Math.ceil(streak / 5) * 5;
+                const daysToGo = nextMilestone - streak;
+                
+                if (daysToGo === 0) {
+                    badge.querySelector('.text').textContent = `${streak}-Day Streak! You earned 50 bonus points!`;
+                } else {
+                    badge.querySelector('.text').textContent = `${streak}-Day Streak! ${daysToGo} more day${daysToGo > 1 ? 's' : ''} for bonus points!`;
+                }
+            } else if (streak > 0) {
+                badge.classList.remove('hidden');
+                badge.querySelector('.text').textContent = `${streak}-Day Streak! Keep it up!`;
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function showChallengeComplete() {
+            const completeDiv = document.getElementById('challengeComplete');
+            completeDiv.classList.remove('hidden');
+            document.getElementById('finalScore').textContent = userData.totalPoints;
+            document.getElementById('tasksContainer').classList.add('hidden');
+        }
+
+        // Local storage functions
+        function saveUserData() {
+            localStorage.setItem('ramadanChallengeUser', JSON.stringify(userData));
+        }
+
+        function loadUserData() {
+            const saved = localStorage.getItem('ramadanChallengeUser');
+            if (saved) {
+                userData = JSON.parse(saved);
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout? Your data will be saved.')) {
+                showLogin();
+            }
+        }
+
+        // Google Sheets integration
+        function sendToGoogleSheets(day, tasksCompleted, points, streakBonus) {
+            // Skip if URL is not set
+            if (!SHEET_URL || SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                console.log('Google Sheets URL not configured, skipping.');
+                return;
+            }
+
+            const data = {
+                action: 'submitProgress',
+                timestamp: new Date().toISOString(),
+                name: userData.name,
+                mobile: userData.mobile,
+                day: day,
+                stage: getCurrentStage(day).name,
+                tasksCompleted: tasksCompleted,
+                points: points,
+                streakBonus: streakBonus,
+                totalPoints: userData.totalPoints,
+                currentStreak: userData.currentStreak
+            };
+
+            console.log('Sending to Google Sheets:', data);
+
+            fetch(SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => console.log('Data sent to Google Sheets successfully.'))
+            .catch(error => console.error('Error sending to Google Sheets:', error));
+        }
+
+        // Initialize on page load
+        window.onload = init;
+    </script>
+</body>
+</html>
