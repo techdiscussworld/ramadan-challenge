@@ -1034,7 +1034,7 @@
         const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyx6hVbKdMneu5ipgAjXYbB83JVJmF_8m0Yb0--3wmcisE4P_yQs_THGGl_vw12IFAShw/exec'; // Replace with your Google Apps Script URL
         
         // TESTING MODE - Set to false for production
-        const TESTING_MODE = true; // Shows navigation buttons to test all 30 days
+        const TESTING_MODE = false; // Shows navigation buttons to test all 30 days
         const TESTING_START_DATE = new Date(); // Today is Day 1 for testing
 
         // Stage definitions
@@ -1838,7 +1838,7 @@
             
             // Production mode - calculate based on Ramadan start date
             const today = new Date();
-            const ramadanStart = new Date('2026-02-14'); // Update this to actual Ramadan start date
+            const ramadanStart = new Date('2026-02-19'); // Update this to actual Ramadan start date
             const diffTime = Math.abs(today - ramadanStart);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             return Math.min(Math.max(1, diffDays), 30);
